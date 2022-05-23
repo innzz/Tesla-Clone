@@ -2,13 +2,13 @@ import React from 'react';
 import styled from "styled-components";
 import Section from './Section';
 
-function Home() {
+function Home({BurgerStatus, setBurgerStatus}) {
   return (
-    <Container>
+    <Container show={BurgerStatus}>
         <Section 
-            title="Model S"
+            title="Model 3"
             description="Order online for Touchless Delivery"
-            backgroundImg="model-s.jpg"
+            backgroundImg="model-3.jpg"
             leftBtnText="Custom Order"
             rightBtnText="Existing Inventory"
         />
@@ -20,9 +20,9 @@ function Home() {
             rightBtnText="Existing Inventory"
         />
         <Section 
-            title="Model 3"
+            title="Model S"
             description="Order online for Touchless Delivery"
-            backgroundImg="model-3.jpg"
+            backgroundImg="model-s.jpg"
             leftBtnText="Custom Order"
             rightBtnText="Existing Inventory"
         />
@@ -60,5 +60,6 @@ function Home() {
 export default Home
 
 const Container = styled.div`
+    filter: ${props => props.show ? 'blur(3px)':'0'};
     height: 100vh;
 `

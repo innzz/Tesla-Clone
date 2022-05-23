@@ -1,13 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Header from './components/Header';
 import Home from './components/Home';
 import './App.css';
 
 function App() {
+  const [BurgerStatus, setBurgerStatus] = useState(false);
   return (
     <div className="App">
-      <Header />
-      <Home />
+      <Header setBurgerStatus={setBurgerStatus} BurgerStatus={BurgerStatus}/>
+      <Home setBurgerStatus={setBurgerStatus} BurgerStatus={BurgerStatus}/>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styled from "styled-components";
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
@@ -12,7 +12,7 @@ function Header({BurgerStatus, setBurgerStatus}) {
 
   return (
     <Container >
-      <a>
+      <a href='/'>
           <img src="/images/logo.svg" alt="" />
       </a>
 
@@ -23,12 +23,12 @@ function Header({BurgerStatus, setBurgerStatus}) {
 
       </Menu>
 
-      <RightMenu>
+      <RightMenu>   
+        
       <a href='#'>Shop</a>
-      <a href='#'>Tesla Account</a>
+      <a href='#'>Account</a>
       <CustomMenu onClick={()=>setBurgerStatus(true)}/>
       </RightMenu>
-
       <BurgerWrapper show={BurgerStatus} onClick={()=>setBurgerStatus(false)}>
       <BurgerNav >
       <CloseWrapper>
@@ -37,10 +37,15 @@ function Header({BurgerStatus, setBurgerStatus}) {
       {cars && cars.map((car,index)=>
           <li key={index}><a href='#'>{car}</a></li> ) 
         }
+        
       <li><a href='#'>Existing Inventory</a></li>
+      
       <li><a href='#'>Used Inventory</a></li>
+      
       <li><a href='#'>Trade-In</a></li>
+      
       <li><a href='#'>Cyber truck</a></li>
+      
       <li><a href='#'>Roadster</a></li>
       </BurgerNav>
       </BurgerWrapper>
@@ -60,12 +65,21 @@ const Container = styled.div`
     top: 0;
     left: 0;
     right: 0;
+    font-size: small;
     z-index: 1;
+
+    a{
+      img{
+        width: 100px;
+        height: 15px;
+      }
+    }
 `
 
 const Menu = styled.div`
-    filter: ${props => props.show ? 'blur(3px)':'0'};
     display: flex;
+    flex: 1;
+    filter: ${props => props.show ? 'blur(3px)':'0'};
     align-items: center;
     flex: 1;
     justify-content: center;
@@ -73,8 +87,14 @@ const Menu = styled.div`
     a{
       font-weight: 600;
       text-transform: uppercase;
-      padding: 0 10px;
+      padding: 8px 20px;
       flex-wrap: nowrap;
+      transition: 0.3s ease-in-out;
+    }
+    
+    a:hover{
+      background: #cfdde8;
+      border-radius: 10px;
     }
 
     @media(max-width: 768px){
@@ -89,8 +109,13 @@ const RightMenu = styled.div`
     a{
       font-weight: 600;
       text-transform: uppercase;
-      padding: 0 10px;
+      padding: 8px 15px;
       flex-wrap: nowrap;
+      transition: 0.3s ease-in-out;
+    }
+    a:hover{
+      background: #cfdde8;
+      border-radius: 10px;
     }
 `
 
@@ -111,8 +136,6 @@ const BurgerNav = styled.div`
     display: flex;
     flex-direction: column;
     text-align: start;
-    // transform: ${props => props.show ? 'translateX(0)' : 'translateX(100%)'};
-    // transition: transform 0.2s ease-in;
     li {
       padding: 15px 0;
       border-bottom: 1px solid rgba(0, 0, 0, .2);
@@ -120,6 +143,10 @@ const BurgerNav = styled.div`
       a {
         font-weight: 600;
       }
+    }
+
+    @media(max-width: 768px){
+      width: 240px;
     }
     
 `
